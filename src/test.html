@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test html</title>
+</head>
+<body>
+    <form>
+        <h3>form 表单</h3>
+        <input type="text" name="param" placeholder="param">
+        <input type="submit" onclick="send()">
+        <input type="reset">
+    </form>
+    <script>
+        function send() {
+            console.log('submit')
+            const xhr = new XMLHttpRequest();
+            xhr.open('post','localhost:8000',true)
+            xhr.onload= (res)=>{
+                console.log('request finished')
+                console.log(res)
+            }
+
+            const param = document.getElementsByTagName('param')[0].value;
+            xhr.send(`params=${param}`);
+        }
+    </script>
+</body>
+</html>
